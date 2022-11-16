@@ -23,3 +23,5 @@
 hs_err_pid*
 
 POO_Labo6/.idea/
+*.iml
+*.xml
