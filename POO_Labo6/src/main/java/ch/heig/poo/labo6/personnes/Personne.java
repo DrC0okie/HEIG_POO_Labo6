@@ -6,7 +6,13 @@ public class Personne {
     private String prénom;
 
     //Méthodes
+    public Personne(String unNom, String unPrénom){
+        nom = unNom;
+        prénom = unPrénom;
+    }
+
+
     public String toString(){
-        return "";
+        return "Nom : " + nom + ", Prénom : " + prénom;
     }
 }

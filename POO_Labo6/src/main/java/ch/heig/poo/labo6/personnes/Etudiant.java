@@ -5,7 +5,12 @@ public class Etudiant extends Personne{
     private int matricule;
 
     //Méthodes
+    public Etudiant(String unNom, String unPrénom, int uneMatricule){
+        super(unNom, unPrénom);
+        matricule = uneMatricule;
+    }
+
     public String toString(){
-        return "";
+        return super.toString() + ", Matricule : " + matricule;
     }
 }
