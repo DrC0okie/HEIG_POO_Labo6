@@ -1,4 +1,4 @@
-package ch.heig.poo.labo6.personnes;
+package ch.heig.poo.labo6.école;
 
 public class Etudiant extends Personne{
     //Attributs
@@ -6,9 +6,9 @@ public class Etudiant extends Personne{
     private Groupe groupe;
 
     //Méthodes
-    public Etudiant(String unNom, String unPrénom, int uneMatricule){
-        super(unNom, unPrénom);
-        matricule = uneMatricule;
+    public Etudiant(String nom, String prénom, int matricule){
+        super(nom, prénom);
+        this.matricule = matricule;
     }
 
     public String toString(){

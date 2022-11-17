@@ -1,6 +1,4 @@
-package ch.heig.poo.labo6.personnes;
-
-import ch.heig.poo.labo6.leçon.Leçon;
+package ch.heig.poo.labo6.école;
 
 import java.util.ArrayList;
 
@@ -10,9 +8,9 @@ public class Professeur extends Personne{
     private ArrayList<Leçon> leçons;
 
     //Méthodes
-    public Professeur(String unNom, String unPrénom, String uneAbreviation){
-        super(unNom, unPrénom);
-        abreviation = uneAbreviation;
+    public Professeur(String nom, String prénom, String abreviation){
+        super(nom, prénom);
+        this.abreviation = abreviation;
     }
 
     public String abréviation(){

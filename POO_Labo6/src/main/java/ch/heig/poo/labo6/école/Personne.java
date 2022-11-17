@@ -1,4 +1,4 @@
-package ch.heig.poo.labo6.personnes;
+package ch.heig.poo.labo6.école;
 
 public class Personne {
     //Attributs
@@ -6,9 +6,9 @@ public class Personne {
     private String prénom;
 
     //Méthodes
-    public Personne(String unNom, String unPrénom){
-        nom = unNom;
-        prénom = unPrénom;
+    public Personne(String nom, String prénom){
+        this.nom = nom;
+        this.prénom = prénom;
     }
 
 

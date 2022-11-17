@@ -1,6 +1,4 @@
-package ch.heig.poo.labo6.personnes;
-
-import ch.heig.poo.labo6.leçon.Leçon;
+package ch.heig.poo.labo6.école;
 
 import java.util.ArrayList;
 
@@ -11,16 +9,16 @@ public class Groupe {
     private int trimestre;
 
     //Méthodes
-    public Groupe(int unNuméro, String uneOrientation, int unTrimestre){
-        numéro = unNuméro;
-        orientation = uneOrientation;
-        trimestre = unTrimestre;
+    public Groupe(int numéro, String orientation, int trimestre){
+        this.numéro = numéro;
+        this.orientation = orientation;
+        this.trimestre = trimestre;
         ArrayList<Etudiant> Etudiants; //ArrayList à redéfinir
         ArrayList<Leçon> Leçons; //Pareil, à redéfinir
     }
 
     public String horaire(){
-        return "";
+        return "-- Horaire du groupe " + nom() + " (" + nombreEtudiants() + " etudiants)";
     }
 
     public String nom(){
