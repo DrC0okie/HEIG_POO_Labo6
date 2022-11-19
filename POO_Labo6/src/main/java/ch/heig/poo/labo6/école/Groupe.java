@@ -1,6 +1,7 @@
 package ch.heig.poo.labo6.école;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Groupe {
     //Attributs
@@ -8,13 +9,23 @@ public class Groupe {
     private String orientation;
     private int trimestre;
 
+    private ArrayList<Etudiant> étudiants;
+
+    private ArrayList<Leçon> leçons;
+
     //Méthodes
     public Groupe(int numéro, String orientation, int trimestre){
         this.numéro = numéro;
         this.orientation = orientation;
         this.trimestre = trimestre;
-        ArrayList<Etudiant> Etudiants; //ArrayList à redéfinir
-        ArrayList<Leçon> Leçons; //Pareil, à redéfinir
+    }
+
+    void ajouterLeçon(Leçon leçon){
+        leçons.add(leçon);
+    }
+
+    void ajouterEtudiant(Etudiant étudiant){
+        étudiants.add(étudiant);
     }
 
     public String horaire(){
@@ -29,7 +40,4 @@ public class Groupe {
         return 0; //retourner la longueur de la liste
     }
 
-    public void définirLeçons(Object args){
-
-    }
 }

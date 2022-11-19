@@ -2,7 +2,15 @@ package ch.heig.poo.labo6.école;
 
 import ch.heig.poo.labo6.école.Professeur;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Leçon {
+    final private static int nbJours = 5, nbHeures = 11;
+
+    final private static String[] NOM_JOURS = {"Lun", "Mar", "Mer", "Jeu", "Ven"};
+
+    final private static String[] NOM_HORAIRES = {"","","","","","","","","",""};
     //Attributs
     private String matière;
     private int jourSemaine;
@@ -25,7 +33,11 @@ public class Leçon {
         this.professeur = professeur;
     }
 
-    static public String horaire(Object args){
+    Leçon[][] créerHoraire(ArrayList<Leçon> leçons){
+        Leçon[][] = new Leçon[][]
+    }
+
+    static public String horaire(ArrayList<Leçon> leçons){
         return "";
     }
 }
