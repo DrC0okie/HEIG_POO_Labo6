@@ -1,7 +1,7 @@
 package ch.heig.poo.labo6.école;
 
 /**
- * La classe Personne contient les informations basiques, communes à tout le monde
+ * Représente une Personne comportant un nom et un prénom
  *
  * @author Kevin Farine, Timothée Van Hove
  */
@@ -12,7 +12,7 @@ public class Personne {
     private final String prénom;
 
     /**
-     * Construit un objet de classe Personne en fournissant un nom et un prénom
+     * Constructeur prenant un nom et un prénom
      * @param nom Nom de la personne
      * @param prénom Prénom de la personne
      */
@@ -22,9 +22,10 @@ public class Personne {
     }
 
     /**
-     * Convertit et retourne l'objet de type Personne en chaîne de caractères
-     * @return Retourne les informations relatives à la personne
+     * Convertit et retourne un String représentant les attributs d'une personne
+     * @return Retourne un String représentant les attributs d'une personne
      */
+    @Override
     public String toString(){
         return prénom + " " + nom;
     }

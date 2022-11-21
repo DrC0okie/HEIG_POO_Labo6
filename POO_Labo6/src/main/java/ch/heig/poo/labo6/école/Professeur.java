@@ -45,6 +45,7 @@ public class Professeur extends Personne{
      * Convertit et retourne les informations liées au professeur en chaîne de caractères.
      * @return Retourne les informations liées au professeur.
      */
+    @Override
     public String toString(){
         return "Prof. " + super.toString() + " ("+ abréviation + ")";
     }

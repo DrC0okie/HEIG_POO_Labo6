@@ -34,6 +34,7 @@ public class Etudiant extends Personne{
      * Convertit et retourne les informations de l'étudiant en chaîne de caractères
      * @return Retourne les informations liées à l'étudiant
      */
+    @Override
     public String toString(){
         return "Etud. " + super.toString() + " (#" + matricule + ") - " + groupe.nom();
     }
