@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Représente un professeur avec un nom, prénom et une abréviation. Hérite de la classe Personne
- * @author Kevin Farine, Timothée Von Hove
+ * @author Kevin Farine, Timothée Van Hove
  */
 public class Professeur extends Personne{
 

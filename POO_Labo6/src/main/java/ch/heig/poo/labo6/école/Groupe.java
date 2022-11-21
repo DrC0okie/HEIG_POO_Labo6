@@ -1,6 +1,7 @@
 package ch.heig.poo.labo6.école;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Représente un Groupe d'étudiants avec un nom de groupe, une orientation, d'un trimestre et un
@@ -9,13 +10,13 @@ import java.util.ArrayList;
  */
 public class Groupe {
 
-    private int numéro;
+    private final int numéro;
 
-    private String orientation;
+    private final String orientation;
 
-    private int trimestre;
+    private final int trimestre;
 
-    private ArrayList<Etudiant> étudiants;
+    private final ArrayList<Etudiant> étudiants;
 
     private ArrayList<Leçon> leçons;
 
@@ -25,11 +26,12 @@ public class Groupe {
      * @param orientation L'orientation (filière) du groupe
      * @param trimestre Le trimestre auquel il participe
      */
-    public Groupe(int numéro, String orientation, int trimestre, ArrayList<Etudiant> étudiants){
+    public Groupe(int numéro, String orientation, int trimestre, Collection<Etudiant> étudiants){
         this.numéro = numéro;
         this.orientation = orientation;
         this.trimestre = trimestre;
-        this.étudiants = étudiants;
+        this.étudiants = new ArrayList<>();
+        this.étudiants.addAll(étudiants);
         for(Etudiant étudiant : étudiants){
             étudiant.setGroupe(this);
         }
@@ -37,10 +39,13 @@ public class Groupe {
 
     /**
      * Ajoute une leçon à la liste de leçons du groupe
-     * @param leçons La leçon à ajouter
+     * @param leçons La liste de leçons à ajouter
      */
-    public void définirLeçons(ArrayList<Leçon> leçons){
-        this.leçons = leçons;
+    public void définirLeçons(Collection<Leçon> leçons){
+        if(this.leçons == null){
+            this.leçons = new ArrayList<>();
+        }
+        this.leçons.addAll(leçons);
     }
 
     /**
@@ -48,7 +53,7 @@ public class Groupe {
      * @return Retourne une chaîne de caractères de la grille horaire du groupe
      */
     public String horaire(){
-        return "-- Horaire du groupe " + nom() + " (" + nombreEtudiants() + " etudiants)\n" +
+        return "-- Horaire du groupe " + nom() + " (" + nombreEtudiants() + " étudiants)\n" +
                 Leçon.horaire(leçons);
     }
 
@@ -65,7 +70,7 @@ public class Groupe {
      * @return Le nombre d'étudiants
      */
     public int nombreEtudiants(){
-        return étudiants.size(); //retourner la longueur de la liste
+        return étudiants.size();
     }
 
 }
