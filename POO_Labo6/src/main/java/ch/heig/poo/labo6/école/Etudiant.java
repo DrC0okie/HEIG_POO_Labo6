@@ -36,6 +36,6 @@ public class Etudiant extends Personne{
      * @return Retourne les informations liées à l'étudiant
      */
     public String toString(){
-        return super.toString() + ", Matricule : " + matricule;
+        return "Etud. " + super.toString() + " (#" + matricule + ") - " + groupe.nom();
     }
 }

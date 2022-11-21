@@ -27,7 +27,7 @@ public class Personne {
      * @return Retourne les informations relatives à la personne
      */
     public String toString(){
-        return "Nom : " + nom + ", Prénom : " + prénom;
+        return prénom + " " + nom;
     }
 
     /**

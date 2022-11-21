@@ -48,7 +48,7 @@ public class Professeur extends Personne{
      * @return Retourne les informations liées au professeur.
      */
     public String toString(){
-        return super.toString() + ", Abreviation : " + abreviation;
+        return "Prof. " + super.toString() + " ("+ abreviation + ")";
     }
 
     /**
