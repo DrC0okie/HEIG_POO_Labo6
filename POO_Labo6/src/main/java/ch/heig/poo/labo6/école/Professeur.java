@@ -26,18 +26,6 @@ public class Professeur extends Personne{
     }
 
     /**
-     * Constructeur prenant les informations basiques, l'abréviation et une liste de leçons enseignées.
-     * @param nom
-     * @param prénom
-     * @param abreviation
-     * @param leçons
-     */
-    public Professeur(String nom, String prénom, String abreviation, ArrayList<Leçon> leçons){
-        this(nom, prénom, abreviation);
-        this.leçons = leçons;
-    }
-
-    /**
      * Ajoute une leçon à la liste de leçons enseignées.
      * @param leçon leçon ajouté à la liste
      */
