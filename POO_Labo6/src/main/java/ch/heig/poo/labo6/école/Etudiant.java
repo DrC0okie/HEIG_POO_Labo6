@@ -12,7 +12,7 @@ public class Etudiant extends Personne{
     private Groupe groupe = null;
 
     /**
-     * Construit un objet de classe Etudiant en fournissant un nom, un prénom et un matricule
+     * Constructeur prenant un nom, un prénom et un matricule
      * @param nom Le nom de l'étudiant
      * @param prénom Le prénom de l'étudiant
      * @param matricule Le matricule de l'étudiant
@@ -24,15 +24,15 @@ public class Etudiant extends Personne{
 
     /**
      * Met à jour le groupe auquel l'étudiant est associé.
-     * @param groupe Le groupe auquel l'étudiant en est membre
+     * @param groupe Le groupe dans lequel l'étudiant se trouve
      */
     void setGroupe(Groupe groupe){
         this.groupe = groupe;
     }
 
     /**
-     * Convertit et retourne les informations de l'étudiant en chaîne de caractères
-     * @return Retourne les informations liées à l'étudiant
+     * Convertit et retourne les informations de l'étudiant
+     * @return String représentant les attributs de l'étudiant
      */
     @Override
     public String toString(){
