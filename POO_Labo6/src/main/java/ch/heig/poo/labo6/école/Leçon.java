@@ -3,15 +3,16 @@ package ch.heig.poo.labo6.école;
 import java.util.Collection;
 
 /**
- * La classe Leçon contient les informations en lien avec la matière, le lieu, l'heure auquel cela a lieu et
- * si un enseignant ou non l'enseigne.
+ * Représente une leçon contenant la matière
  *
  * @author Kevin Farine, Timothée Van Hove
  */
 public class Leçon {
-    final private static String[] JOURS = {"Lun", "Mar", "Mer", "Jeu", "Ven"},
-            HEURES = {"8:30", "9:15", "10:25", "11:15", "12:00", "13:15", "14:00", "14:55",
-                    "15:45", "16:35", "17:20"};
+    private enum Jours {Lun, Mar, Mer, Jeu, Ven}
+
+    ;
+    final private static String[] HEURES = {"8:30", "9:15", "10:25", "11:15", "12:00", "13:15",
+            "14:00", "14:55", "15:45", "16:35", "17:20"};
     final private static char SEP_COL = '|', SEP_LIGNE = '-';
     final private static int LARGEUR_PREMIERE_COL = 5,
             INITIALES_MATIERE = 5, INITIALES_SALLE = 3,
@@ -19,7 +20,7 @@ public class Leçon {
     final private static String BAS_CELLULE = SEP_COL + (SEP_LIGNE + "").repeat(LARGEUR_COL_JOURS),
             CELLULE_VIDE = BAS_CELLULE.replace(SEP_LIGNE, ' '),
             SEP_HEURE = " ".repeat(LARGEUR_PREMIERE_COL),
-            SEP_LIGNE_COMPLETE = SEP_HEURE + BAS_CELLULE.repeat(JOURS.length) + SEP_COL + "\n",
+            SEP_LIGNE_COMPLETE = SEP_HEURE + BAS_CELLULE.repeat(Jours.values().length) + SEP_COL + "\n",
             FORMAT_HEURE = "%" + LARGEUR_PREMIERE_COL + "s",
             FORMAT_CELLULE = SEP_COL + "%-" + INITIALES_MATIERE + "s %" + INITIALES_SALLE + "s %" +
                     Professeur.NBRE_INITIALES + "s";
@@ -32,22 +33,24 @@ public class Leçon {
     private Professeur professeur;
 
     /**
-     * @param matière
-     * @param jourSemaine
-     * @param périodeDébut
-     * @param durée
-     * @param salle
+     * Constructeur de la Leçon
+     *
+     * @param matière      L'acronyme de la matière de la leçon (par défaut 5 caractères maximum)
+     * @param jourSemaine  Le jour de la semaine 1 (lundi) à 5 (vendredi)
+     * @param périodeDébut Le numéro de période à laquelle la leçon commence (1 - 11 par défaut)
+     * @param durée        La durée (en périodes) de la leçon
+     * @param salle        L'acronyme de la salle de cours. Par défaut, maximum 3 caractères
      */
     public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle) {
         if (périodeDébut + durée > HEURES.length) {
             throw new RuntimeException("La durée de la leçon excède la longueur de la plage " +
                     "horaire");
         }
-        if(salle.length() > INITIALES_SALLE){
+        if (salle.length() > INITIALES_SALLE) {
             throw new RuntimeException("Les initiales de la salle ne peuvent pas dépasser" +
                     INITIALES_SALLE + " caractères. Actuellement : " + salle.length());
         }
-        if(matière.length() > INITIALES_MATIERE){
+        if (matière.length() > INITIALES_MATIERE) {
             throw new RuntimeException("Les initiales de la matière ne peuvent pas dépasser" +
                     INITIALES_MATIERE + " caractères. Actuellement : " + matière.length());
         }
@@ -60,12 +63,14 @@ public class Leçon {
     }
 
     /**
-     * @param matière
-     * @param jourSemaine
-     * @param périodeDébut
-     * @param durée
-     * @param salle
-     * @param professeur
+     * Constructeur de la Leçon
+     *
+     * @param matière      L'acronyme de la matière de la leçon (par défaut 5 caractères maximum)
+     * @param jourSemaine  Le jour de la semaine 1 (lundi) à 5 (vendredi)
+     * @param périodeDébut Le numéro de période à laquelle la leçon commence (1 - 11 par défaut)
+     * @param durée        La durée (en périodes) de la leçon
+     * @param salle        L'acronyme de la salle de cours. Par défaut, maximum 3 caractères
+     * @param professeur   Le professeur assigné à cette leçon
      */
     public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle,
                  Professeur professeur) {
@@ -85,19 +90,21 @@ public class Leçon {
         StringBuilder enTête = new StringBuilder(SEP_HEURE);
 
         //Ajouter tous les jours de la semaine
-        for (String jour : JOURS) {
-            enTête.append(String.format(SEP_COL + " %-" + (LARGEUR_COL_JOURS - 1) + "s", jour));
+        for (Jours jour : Jours.values()) {
+            enTête.append(String.format(SEP_COL + " %-" + (LARGEUR_COL_JOURS - 1) + "s",
+                    jour.name()));
         }
         //Ajouter le dernier séparateur, le retour à la ligne et le bas des cellules de l'en-tête
         return enTête.append(SEP_COL + "\n").append(SEP_LIGNE_COMPLETE);
     }
 
     /**
-     * Construit la cellule de la grille horaire
+     * Construit la cellule de la grille horaire en fonction des lignes paires (contenu de la
+     * cellule) et des lignes impaires (séparation entre chaque cellule)
      *
-     * @param indiceLigne L'indice du tableau de leçons
-     * @param leçon       La leçon dont on crée la cellule
-     * @return La cellule à afficher de la grille horaire
+     * @param indiceLigne L'indice de chaque ligne de la grille horaire
+     * @param leçon La leçon à traiter
+     * @return La représentation sous forme de String de la grille horaire
      */
     private static String créerCellule(int indiceLigne, Leçon leçon) {
         boolean estLignePaire = indiceLigne % 2 == 0;
@@ -138,7 +145,7 @@ public class Leçon {
      */
     public static String horaire(Collection<Leçon> leçons) {
         //Tableau 2d contenant toutes les leçons
-        Leçon[][] tableauLeçons = new Leçon[HEURES.length][JOURS.length];
+        Leçon[][] tableauLeçons = new Leçon[HEURES.length][Jours.values().length];
         for (Leçon leçon : leçons) {
             for (int i = 0; i < leçon.durée; ++i) {
                 tableauLeçons[leçon.périodeDébut - 1 + i][leçon.jourSemaine - 1] = leçon;
@@ -151,7 +158,7 @@ public class Leçon {
             horaire.append(i % 2 != 0 ? SEP_HEURE : String.format(FORMAT_HEURE, HEURES[i / 2]));
 
             //Ajout du contenu des cellules de chaque heure de début de chaque jour
-            for (int j = 0; j < JOURS.length; ++j) {
+            for (int j = 0; j < Jours.values().length; ++j) {
                 horaire.append(créerCellule(i, tableauLeçons[i / 2][j]));
             }
             horaire.append(SEP_COL + "\n");

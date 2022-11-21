@@ -23,7 +23,7 @@ public class Personne {
 
     /**
      * Convertit et retourne un String représentant les attributs d'une personne
-     * @return Retourne un String représentant les attributs d'une personne
+     * @return Un String représentant les attributs d'une personne
      */
     @Override
     public String toString(){

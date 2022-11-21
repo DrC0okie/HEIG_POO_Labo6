@@ -4,7 +4,7 @@ import ch.heig.poo.labo6.école.*;
 import java.util.Arrays;
 
 /**
- * La classe Main permet de tester les fonctionnalités demand
+ * Classe permettant de tester les fonctionnalités demandées dans la donnée du laboratoire 6
  * @author Kevin Farine, Timothée Van Hove
  */
 public class Main {
@@ -39,7 +39,7 @@ public class Main {
         si61.définirLeçons(Arrays.asList(poo1, poo2, poo3));
 
         //6.
-        System.out.println("--Membres de l'ecole");
+        System.out.println("--Membres de l'école");
         for (Personne p : new Personne[]{pdo, dre, john, paul, ringo, george, roger, david}){
             System.out.println(p);
         }

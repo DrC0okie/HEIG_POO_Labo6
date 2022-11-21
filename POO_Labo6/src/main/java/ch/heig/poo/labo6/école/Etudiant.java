@@ -1,7 +1,7 @@
 package ch.heig.poo.labo6.école;
 
 /**
- * La classe Etudiant est une sous-classe de Personne et contient le matricule et le groupe associé en plus
+ * Représente un étudiant avec un nom, prénom et un matricule. Hérite de la classe Personne
  *
  * @author Kevin Farine, Timothée Van Hove
  */
