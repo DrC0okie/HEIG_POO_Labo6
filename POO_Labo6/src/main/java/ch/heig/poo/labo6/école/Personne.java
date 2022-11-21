@@ -3,7 +3,7 @@ package ch.heig.poo.labo6.école;
 /**
  * La classe Personne contient les informations basiques, communes à tout le monde
  *
- * @author Kevin Farine, Timothée Von Hove
+ * @author Kevin Farine, Timothée Van Hove
  */
 public class Personne {
 

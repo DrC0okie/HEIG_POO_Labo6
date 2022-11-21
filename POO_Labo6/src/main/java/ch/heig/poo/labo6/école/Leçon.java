@@ -6,7 +6,7 @@ import java.util.Collection;
  * La classe Leçon contient les informations en lien avec la matière, le lieu, l'heure auquel cela a lieu et
  * si un enseignant ou non l'enseigne.
  *
- * @author Kevin Farine, Timothée Von Hove
+ * @author Kevin Farine, Timothée Van Hove
  */
 public class Leçon {
     final private static String[] JOURS = {"Lun", "Mar", "Mer", "Jeu", "Ven"},

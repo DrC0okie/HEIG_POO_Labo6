@@ -3,7 +3,7 @@ package ch.heig.poo.labo6.école;
 /**
  * La classe Etudiant est une sous-classe de Personne et contient le matricule et le groupe associé en plus
  *
- * @author Kevin Farine, Timothée Von Hove
+ * @author Kevin Farine, Timothée Van Hove
  */
 public class Etudiant extends Personne{
 

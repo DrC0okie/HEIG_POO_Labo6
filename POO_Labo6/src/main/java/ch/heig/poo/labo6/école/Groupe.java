@@ -6,7 +6,7 @@ import java.util.Collection;
 /**
  * Représente un Groupe d'étudiants avec un nom de groupe, une orientation, d'un trimestre et un
  * numéro.
- * @author Kevin Farine, Timothée Von Hove
+ * @author Kevin Farine, Timothée Van Hove
  */
 public class Groupe {
 
