@@ -3,27 +3,26 @@ package ch.heig.poo.labo6.école;
 import java.util.ArrayList;
 
 /**
- * La classe Groupe regroupe un ensemble d'étudiants sous un nom de groupe composé d'une orientation, d'un trimestre et
- * enfin d'un numéro.
- *
+ * Représente un Groupe d'étudiants avec un nom de groupe, une orientation, d'un trimestre et un
+ * numéro.
  * @author Kevin Farine, Timothée Von Hove
  */
 public class Groupe {
-    //Attributs
+
     private int numéro;
+
     private String orientation;
+
     private int trimestre;
 
     private ArrayList<Etudiant> étudiants;
 
     private ArrayList<Leçon> leçons;
 
-    //Méthodes
-
     /**
-     * Construit un objet de classe Groupe en fournissant un numéro, une orientation et un trimestre
+     * Constructeur prenant un numéro, une orientation et un trimestre
      * @param numéro Le numéro de groupe
-     * @param orientation L'orientation (filiaire) du groupe
+     * @param orientation L'orientation (filière) du groupe
      * @param trimestre Le trimestre auquel il participe
      */
     public Groupe(int numéro, String orientation, int trimestre, ArrayList<Etudiant> étudiants){

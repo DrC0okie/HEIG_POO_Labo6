@@ -3,6 +3,7 @@ package ch.heig.poo.labo6;
 import ch.heig.poo.labo6.école.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * La classe Main permet de tester les fonctionnalités fournies par le package école.
@@ -17,9 +18,9 @@ public class Main {
         Professeur pdo = new Professeur("Donini", "Pier", "PDO");
 
         //2.
-        Leçon poo1 = new Leçon("POO", 2, 6, 2, "H02", pdo);
-        Leçon poo2 = new Leçon("POO", 3, 6, 2, "H02", pdo);
-        Leçon poo3 = new Leçon("POO", 3, 8, 1, "H02", pdo);
+        Leçon poo1 = new Leçon("POO", 3, 6, 2, "H02", pdo);
+        Leçon poo2 = new Leçon("POO", 4, 6, 2, "H02", pdo);
+        Leçon poo3 = new Leçon("POO", 4, 8, 2, "H02", pdo);
         Leçon sye1 = new Leçon("SYE", 1, 1, 2, "G01", dre);
         Leçon sye2 = new Leçon("SYE", 4, 3, 2, "A09", dre);
         Leçon tic1 = new Leçon("TIC", 2, 10, 1, "F06");
