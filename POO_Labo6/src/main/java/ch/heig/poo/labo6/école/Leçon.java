@@ -2,6 +2,12 @@ package ch.heig.poo.labo6.école;
 
 import java.util.ArrayList;
 
+/**
+ * La classe Leçon contient les informations en lien avec la matière, le lieu, l'heure auquel cela a lieu et
+ * si un enseignant ou non l'enseigne.
+ *
+ * @author Kevin Farine, Timothée Von Hove
+ */
 public class Leçon {
     final private static String[] JOURS = {"Lun", "Mar", "Mer", "Jeu", "Ven"},
             PLAGES_HORAIRE = {"8:30", "9:15", "10:25", "11:15", "12:00", "13:15", "14:00", "14:55",
@@ -21,6 +27,15 @@ public class Leçon {
     private String salle;
     private Professeur professeur;
 
+    /**
+     * Contruit un objet de classe Leçon en fournissant la matière, le moment du cours, la salle et l'enseignant
+     * @param matière
+     * @param jourSemaine
+     * @param périodeDébut
+     * @param durée
+     * @param salle
+     * @param professeur
+     */
     public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle,
                  Professeur professeur){
         this.matière = matière;
@@ -34,6 +49,10 @@ public class Leçon {
         }
     }
 
+    /**
+     * Construit l'en-tête de la grille horaire
+     * @return l'en-tête de la grille horaire
+     */
     private static StringBuilder CréerEnTête(){
         StringBuilder enTête = new StringBuilder(SEP_HEURE);
         for(String jour : JOURS){
@@ -46,6 +65,11 @@ public class Leçon {
         return enTête.append(SEP_LIGNE_COMPLETE);
     }
 
+    /**
+     * Construit la ligne de la grille horaire
+     * @param indiceLigne L'indice du tableau de leçons
+     * @return La ligne de la grille horaire
+     */
     private static StringBuilder créerPlageHoraire(int indiceLigne){
         if(indiceLigne % 2 != 0){
             return new StringBuilder(SEP_HEURE);
@@ -54,6 +78,12 @@ public class Leçon {
                 PLAGES_HORAIRE[indiceLigne / 2]));
     }
 
+    /**
+     * Construit la cellule de la grille horaire
+     * @param indiceLigne L'indice du tableau de leçons
+     * @param leçon La leçon dont on crée la cellule
+     * @return La cellule à afficher de la grille horaire
+     */
     private static StringBuilder créerCellule(int indiceLigne, Leçon leçon){
         StringBuilder cellule = new StringBuilder();
         if(leçon == null){
