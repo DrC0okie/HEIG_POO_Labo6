@@ -8,11 +8,11 @@ public class Main {
         Professeur pdo = new Professeur("Pier", "Donini", "PDO");
         Professeur dre = new Professeur("Daniel", "Rossier", "DRE");
 
-        Leçon poo1 = new Leçon("POO", 2, 5, 2, "H02", pdo);
-        Leçon poo2 = new Leçon("POO", 3, 5, 2, "H02", pdo);
-        Leçon poo3 = new Leçon("POO", 3, 7, 2, "H02", pdo);
-        Leçon sye1 = new Leçon("SYE", 0, 0, 2, "G01", dre);
-        Leçon sye2 = new Leçon("SYE", 3, 2, 2, "A09", dre);
+        Leçon poo1 = new Leçon("POO", 1, 1, 1, "H02", pdo);
+        Leçon poo2 = new Leçon("POO", 2, 1, 2, "H02", pdo);
+        Leçon poo3 = new Leçon("POO", 3, 1, 3, "H02", pdo);
+        Leçon sye1 = new Leçon("SYE", 4, 1, 4, "G01", pdo);
+        Leçon sye2 = new Leçon("SYE", 5, 1, 5, "A09", pdo);
 
         System.out.println(pdo.horaire());
 
