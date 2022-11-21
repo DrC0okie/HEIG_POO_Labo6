@@ -56,6 +56,6 @@ public class Professeur extends Personne{
      * @return Retourne une chaîne de caractères de la grille horaire
      */
     public String horaire(){
-        return "-- Horaire Prof. " + getPrénom() + " " + getNom() + " (" + abreviation + ")\n" + Leçon.horaire(leçons);
+        return "-- Horaire " + this + "\n" + Leçon.horaire(leçons);
     }
 }
