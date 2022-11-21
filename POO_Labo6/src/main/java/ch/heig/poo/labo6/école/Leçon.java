@@ -116,7 +116,7 @@ public class Leçon {
         if (périodeActuelle == 1) {
             if (estLignePaire) {
                 return String.format(FORMAT_CELLULE, leçon.matière, leçon.salle,
-                        leçon.professeur != null ? leçon.professeur.abréviation() : "");
+                        leçon.professeur != null ? leçon.professeur.abreviation() : "");
             }
             if (leçon.durée > 1) {
                 return CELLULE_VIDE;

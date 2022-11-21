@@ -3,6 +3,11 @@ package ch.heig.poo.labo6;
 import ch.heig.poo.labo6.école.*;
 import java.util.Arrays;
 
+/**
+ * La classe Main permet de tester les fonctionnalités fournies par le package école.
+ *
+ * @author Kevin Farine, Timothée Von Hove
+ */
 public class Main {
     public static void main(String[] args) {
 
@@ -17,7 +22,7 @@ public class Main {
         Leçon sye1 = new Leçon("SYE", 1, 1, 2, "G01", dre);
         Leçon sye2 = new Leçon("SYE", 4, 3, 2, "A09", dre);
         Leçon tic1 = new Leçon("TIC", 2, 10, 1, "F06");
-        
+
         //3.
         Etudiant john = new Etudiant("Lennon", "John", 1234);
         Etudiant paul = new Etudiant("Mc Cartney", "Paul", 2341);
