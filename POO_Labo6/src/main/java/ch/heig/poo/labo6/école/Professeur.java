@@ -31,7 +31,7 @@ public class Professeur extends Personne{
      * Ajoute une leçon à la liste de leçons enseignées.
      * @param leçon leçon ajouté à la liste
      */
-    void addLeçon(Leçon leçon){
+    void définirLeçon(Leçon leçon){
         leçons.add(leçon);
     }
 
@@ -56,6 +56,6 @@ public class Professeur extends Personne{
      * @return Retourne une chaîne de caractères de la grille horaire
      */
     public String horaire(){
-        return "-- Horaire Prof. " + getPrénom() + " " + getNom() + "(" + abreviation + ")\n" + Leçon.horaire(leçons);
+        return "-- Horaire Prof. " + getPrénom() + " " + getNom() + " (" + abreviation + ")\n" + Leçon.horaire(leçons);
     }
 }

@@ -1,7 +1,6 @@
 package ch.heig.poo.labo6.école;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * La classe Groupe regroupe un ensemble d'étudiants sous un nom de groupe composé d'une orientation, d'un trimestre et
@@ -27,26 +26,22 @@ public class Groupe {
      * @param orientation L'orientation (filiaire) du groupe
      * @param trimestre Le trimestre auquel il participe
      */
-    public Groupe(int numéro, String orientation, int trimestre){
+    public Groupe(int numéro, String orientation, int trimestre, ArrayList<Etudiant> étudiants){
         this.numéro = numéro;
         this.orientation = orientation;
         this.trimestre = trimestre;
+        this.étudiants = étudiants;
+        for(Etudiant étudiant : étudiants){
+            étudiant.setGroupe(this);
+        }
     }
 
     /**
      * Ajoute une leçon à la liste de leçons du groupe
-     * @param leçon La leçon à ajouter
+     * @param leçons La leçon à ajouter
      */
-    void ajouterLeçon(Leçon leçon){
-        leçons.add(leçon);
-    }
-
-    /**
-     * Ajoute un étudiant à la liste d'étudiants du groupe
-     * @param étudiant L'étudiant à ajouter
-     */
-    void ajouterEtudiant(Etudiant étudiant){
-        étudiants.add(étudiant);
+    public void définirLeçons(ArrayList<Leçon> leçons){
+        this.leçons = leçons;
     }
 
     /**
@@ -54,7 +49,8 @@ public class Groupe {
      * @return Retourne une chaîne de caractères de la grille horaire du groupe
      */
     public String horaire(){
-        return "-- Horaire du groupe " + nom() + " (" + nombreEtudiants() + " etudiants)";
+        return "-- Horaire du groupe " + nom() + " (" + nombreEtudiants() + " etudiants)\n" +
+                Leçon.horaire(leçons);
     }
 
     /**
@@ -70,7 +66,7 @@ public class Groupe {
      * @return Le nombre d'étudiants
      */
     public int nombreEtudiants(){
-        return 0; //retourner la longueur de la liste
+        return étudiants.size(); //retourner la longueur de la liste
     }
 
 }

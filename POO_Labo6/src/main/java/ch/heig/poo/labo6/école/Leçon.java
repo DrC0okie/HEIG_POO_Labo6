@@ -29,7 +29,15 @@ public class Leçon {
     private final int périodeDébut;
     private final int durée;
     private final String salle;
-    private final Professeur professeur;
+    private Professeur professeur;
+
+    public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle){
+        this.matière = matière;
+        this.jourSemaine = jourSemaine;
+        this.périodeDébut = périodeDébut;
+        this.durée = durée;
+        this.salle = salle;
+    }
 
     /**
      * Constructeur de Leçon
@@ -42,14 +50,10 @@ public class Leçon {
      */
     public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle,
                  Professeur professeur){
-        this.matière = matière;
-        this.jourSemaine = jourSemaine;
-        this.périodeDébut = périodeDébut;
-        this.durée = durée;
-        this.salle = salle;
+        this(matière, jourSemaine, périodeDébut, durée, salle);
         this.professeur = professeur;
         if(professeur != null){
-            this.professeur.addLeçon(this);
+            this.professeur.définirLeçon(this);
         }
     }
 
@@ -97,7 +101,7 @@ public class Leçon {
                 return CELLULE_VIDE;
             }
         }
-        //Périodes suivantes de la leçon : Cellules vides (lignes paires et impaires)
+        //Périodes suivantes de la leçon : Cellules vides s'il s'agit d'une période intermédiaire
         if(périodeActuelle < leçon.durée || estLignePaire){
             return CELLULE_VIDE;
         }
