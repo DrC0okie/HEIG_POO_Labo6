@@ -16,9 +16,5 @@ public class Main {
 
         System.out.println(pdo.horaire());
 
-        //TODO Kévin : l'affichage du calendrier fonctionne mais que avec des durées de leçons de
-        // 2 périodes (c'est codé en dur). Il faudrait gérer l'affichege pour des durées de n
-        // periodes. Pour ça il faudrait trouver un moyen d'afficher "---------" ou "         "
-        // dans les cellules du dessous en fonction de la durée de chaque leçon.
     }
 }

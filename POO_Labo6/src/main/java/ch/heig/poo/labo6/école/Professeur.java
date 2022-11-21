@@ -12,6 +12,8 @@ public class Professeur extends Personne{
     private String abreviation;
     private ArrayList<Leçon> leçons = new ArrayList<Leçon>();
 
+    static final int NBRE_INITIALES = 3;
+
     //Méthodes
 
     /**
