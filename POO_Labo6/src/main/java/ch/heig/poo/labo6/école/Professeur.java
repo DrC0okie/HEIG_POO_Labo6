@@ -15,7 +15,7 @@ public class Professeur extends Personne{
     //Méthodes
 
     /**
-     * Constructeur prenant les informations basiques et l'abréviation.
+     * Construit un objet de classe Professeur en fournissant un nom, un prénom et une abréviation.
      * @param nom
      * @param prénom
      * @param abreviation
@@ -45,14 +45,26 @@ public class Professeur extends Personne{
         leçons.add(leçon);
     }
 
+    /**
+     * Récupère l'abréviation du professeur
+     * @return Retourne l'abréviation du professeur en chaîne de caractères
+     */
     public String abreviation(){
         return abreviation;
     }
 
+    /**
+     * Convertit et retourne les informations liées au professeur en chaîne de caractères.
+     * @return Retourne les informations liées au professeur.
+     */
     public String toString(){
         return super.toString() + ", Abreviation : " + abreviation;
     }
 
+    /**
+     * Fournit la grille horaire du professeur en se basant sur les cours enseignés
+     * @return Retourne une chaîne de caractères de la grille horaire
+     */
     public String horaire(){
         return "-- Horaire Prof. " + getPrénom() + " " + getNom() + "(" + abreviation + ")\n" + Leçon.horaire(leçons);
     }
