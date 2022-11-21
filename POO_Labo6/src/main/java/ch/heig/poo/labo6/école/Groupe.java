@@ -32,7 +32,7 @@ public class Groupe {
         this.trimestre = trimestre;
         this.étudiants = new ArrayList<>();
         this.étudiants.addAll(étudiants);
-        for(Etudiant étudiant : étudiants){
+        for(Etudiant étudiant : this.étudiants){
             étudiant.setGroupe(this);
         }
     }
@@ -50,7 +50,7 @@ public class Groupe {
 
     /**
      * Fournit la grille horaire du groupe en se basant sur les cours suivis.
-     * @return Retourne une chaîne de caractères de la grille horaire du groupe
+     * @return Un String représentant la grille horaire du groupe
      */
     public String horaire(){
         return "-- Horaire du groupe " + nom() + " (" + nombreEtudiants() + " étudiants)\n" +
@@ -58,16 +58,16 @@ public class Groupe {
     }
 
     /**
-     * Récupère le nom du groupe formé à partir de l'orientation, du trimestre et du numéro
-     * @return Retourne en chaîne de caractère, le nom du groupe
+     * Retourne le nom du groupe, formaté à partir de l'orientation, du trimestre et du numéro
+     * @return Un String représentant le nom formaté du groupe
      */
     public String nom(){
-        return orientation + trimestre + "-" + numéro; //Demandé et confirmé par RRH
+        return orientation + trimestre + "-" + numéro;
     }
 
     /**
-     * Récupère le nombre d'étudiants faisant partis du groupe
-     * @return Le nombre d'étudiants
+     * Retourne le nombre d'étudiants faisant partis du groupe
+     * @return Le nombre d'étudiants du groupe
      */
     public int nombreEtudiants(){
         return étudiants.size();

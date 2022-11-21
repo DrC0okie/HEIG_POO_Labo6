@@ -15,7 +15,7 @@ public class Professeur extends Personne{
     static final int NBRE_INITIALES = 3;
 
     /**
-     * Construit un objet de classe Professeur en fournissant un nom, un prénom et une abréviation.
+     * Constructeur prenant un nom, un prénom et une abréviation
      * @param nom
      * @param prénom
      * @param abreviation
@@ -26,24 +26,24 @@ public class Professeur extends Personne{
     }
 
     /**
-     * Ajoute une leçon à la liste de leçons enseignées.
-     * @param leçon leçon ajouté à la liste
+     * Ajoute une leçon à la liste de leçons enseignées du professeur
+     * @param leçon leçon à ajouter à la liste
      */
     void définirLeçon(Leçon leçon){
         leçons.add(leçon);
     }
 
     /**
-     * Récupère l'abréviation du professeur
-     * @return Retourne l'abréviation du professeur en chaîne de caractères
+     * retourne l'abréviation du professeur
+     * @return L'abréviation du professeur en format String
      */
     public String abreviation(){
         return abréviation;
     }
 
     /**
-     * Convertit et retourne les informations liées au professeur en chaîne de caractères.
-     * @return Retourne les informations liées au professeur.
+     * Convertit et retourne les informations liées au professeur en format String
+     * @return Un String représentant les informations liées au professeur
      */
     @Override
     public String toString(){
@@ -52,7 +52,7 @@ public class Professeur extends Personne{
 
     /**
      * Fournit la grille horaire du professeur en se basant sur les cours enseignés
-     * @return Retourne une chaîne de caractères de la grille horaire
+     * @return Un String représentant la grille horaire
      */
     public String horaire(){
         return "-- Horaire " + this + "\n" + Leçon.horaire(leçons);
