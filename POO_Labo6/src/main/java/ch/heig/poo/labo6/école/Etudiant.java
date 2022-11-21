@@ -6,11 +6,10 @@ package ch.heig.poo.labo6.école;
  * @author Kevin Farine, Timothée Von Hove
  */
 public class Etudiant extends Personne{
-    //Attributs
-    private int matricule;
-    private Groupe groupe = null;
 
-    //Méthodes
+    private final int matricule;
+
+    private Groupe groupe = null;
 
     /**
      * Construit un objet de classe Etudiant en fournissant un nom, un prénom et un matricule

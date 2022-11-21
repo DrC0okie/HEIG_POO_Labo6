@@ -7,13 +7,12 @@ import java.util.ArrayList;
  * @author Kevin Farine, Timothée Van Hove
  */
 public class Professeur extends Personne{
-    //Attributs
-    private String abreviation;
-    private ArrayList<Leçon> leçons = new ArrayList<Leçon>();
+
+    private final String abréviation;
+
+    private final ArrayList<Leçon> leçons = new ArrayList<>();
 
     static final int NBRE_INITIALES = 3;
-
-    //Méthodes
 
     /**
      * Construit un objet de classe Professeur en fournissant un nom, un prénom et une abréviation.
@@ -23,7 +22,7 @@ public class Professeur extends Personne{
      */
     public Professeur(String nom, String prénom, String abreviation){
         super(nom, prénom);
-        this.abreviation = abreviation;
+        this.abréviation = abreviation;
     }
 
     /**
@@ -39,7 +38,7 @@ public class Professeur extends Personne{
      * @return Retourne l'abréviation du professeur en chaîne de caractères
      */
     public String abreviation(){
-        return abreviation;
+        return abréviation;
     }
 
     /**
@@ -47,7 +46,7 @@ public class Professeur extends Personne{
      * @return Retourne les informations liées au professeur.
      */
     public String toString(){
-        return "Prof. " + super.toString() + " ("+ abreviation + ")";
+        return "Prof. " + super.toString() + " ("+ abréviation + ")";
     }
 
     /**

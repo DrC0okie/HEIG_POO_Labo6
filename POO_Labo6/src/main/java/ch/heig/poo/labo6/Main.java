@@ -4,9 +4,8 @@ import ch.heig.poo.labo6.école.*;
 import java.util.Arrays;
 
 /**
- * La classe Main permet de tester les fonctionnalités fournies par le package école.
- *
- * @author Kevin Farine, Timothée Von Hove
+ * La classe Main permet de tester les fonctionnalités demand
+ * @author Kevin Farine, Timothée Van Hove
  */
 public class Main {
     public static void main(String[] args) {

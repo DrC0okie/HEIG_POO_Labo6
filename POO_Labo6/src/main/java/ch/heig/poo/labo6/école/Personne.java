@@ -6,11 +6,10 @@ package ch.heig.poo.labo6.école;
  * @author Kevin Farine, Timothée Von Hove
  */
 public class Personne {
-    //Attributs
-    private String nom;
-    private String prénom;
 
-    //Méthodes
+    private final String nom;
+
+    private final String prénom;
 
     /**
      * Construit un objet de classe Personne en fournissant un nom et un prénom
@@ -28,21 +27,5 @@ public class Personne {
      */
     public String toString(){
         return prénom + " " + nom;
-    }
-
-    /**
-     * Récupère le nom de la personne
-     * @return Retourne le nom de la personne
-     */
-    protected String getNom(){
-        return nom;
-    }
-
-    /**
-     * Récupère le prénom de la personne
-     * @return Retourne le prénom de la personne
-     */
-    protected String getPrénom(){
-        return prénom;
     }
 }
