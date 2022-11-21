@@ -24,18 +24,6 @@ public class Etudiant extends Personne{
     }
 
     /**
-     * Construit un objet de classe Etudiant en fournissant un nom, un prénom, un matricule et un groupe.
-     * @param nom
-     * @param prénom
-     * @param matricule
-     * @param groupe
-     */
-    public Etudiant(String nom, String prénom, int matricule, Groupe groupe){
-        this(nom, prénom, matricule);
-        this.groupe = groupe;
-    }
-
-    /**
      * Met à jour le groupe auquel l'étudiant est associé.
      * @param groupe Le groupe auquel l'étudiant en est membre
      */
