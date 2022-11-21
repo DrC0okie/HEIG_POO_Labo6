@@ -57,16 +57,33 @@ public class Leçon {
     private static StringBuilder créerCellule(int indiceLigne, Leçon leçon){
         StringBuilder cellule = new StringBuilder();
         if(leçon == null){
-            if(indiceLigne % 2 != 0){
-                return cellule.append(BAS_CELLULE);
+            if(indiceLigne % 2 == 0){
+                return cellule.append(CELLULE_VIDE);
+            }
+            return cellule.append(BAS_CELLULE);
+        }
+
+        //Calculer la periode actuelle
+        int périodeActuelle = indiceLigne / 2 - (leçon.périodeDébut - 1);
+
+        //Première période : ajouter les informations dans la cellule
+        if(périodeActuelle == 0){
+            if(indiceLigne % 2 == 0){
+                return cellule.append(String.format("|%-5s %3s %3s", leçon.matière, leçon.salle,
+                        leçon.professeur != null ? leçon.professeur.abreviation() : ""));
             }
             return cellule.append(CELLULE_VIDE);
         }
-        if(indiceLigne % 2 != 0){
+        //Périodes intérmédiares : Cellules vides (lignes paires et impaires)
+        else if(périodeActuelle < leçon.durée - 1){
             return cellule.append(CELLULE_VIDE);
+        }//Dernière période : Délimiter le bas de la cellule (lignes impaires)
+        else{
+            if(indiceLigne % 2 == 0){
+                return cellule.append(CELLULE_VIDE);
+            }
         }
-        return cellule.append(String.format("|%-5s %3s %3s", leçon.matière, leçon.salle,
-                leçon.professeur != null ? leçon.professeur.abreviation() : ""));
+        return cellule.append(BAS_CELLULE);
     }
 
     /**
@@ -79,7 +96,11 @@ public class Leçon {
         //Créer un tableau 2d comportant toutes les leçons
         Leçon[][] tableauLeçons = new Leçon[PLAGES_HORAIRE.length][JOURS.length];
         for(Leçon leçon : leçons){
-            tableauLeçons[leçon.périodeDébut - 1][leçon.jourSemaine - 1] = leçon;
+            for(int i = 0; i < leçon.durée; ++i){
+                //Nous ajoutons au tableau les leçons unitaires
+                tableauLeçons[(leçon.périodeDébut - 1) + i][leçon.jourSemaine - 1] =
+                        leçon;
+            }
         }
         //Ajout de l'en-tête
         StringBuilder horaire = new StringBuilder(CréerEnTête());
