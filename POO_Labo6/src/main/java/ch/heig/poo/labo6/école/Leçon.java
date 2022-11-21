@@ -20,9 +20,9 @@ public class Leçon {
             CELLULE_VIDE = BAS_CELLULE.replace(SEP_LIGNE, ' '),
             SEP_HEURE = " ".repeat(LARGEUR_PREMIERE_COL),
             SEP_LIGNE_COMPLETE = SEP_HEURE + BAS_CELLULE.repeat(JOURS.length) + SEP_COL + "\n",
-            FORMAT_HEURE = "%"+ LARGEUR_PREMIERE_COL + "s",
+            FORMAT_HEURE = "%" + LARGEUR_PREMIERE_COL + "s",
             FORMAT_CELLULE = SEP_COL + "%-" + INITIALES_MATIERE + "s %" + INITIALES_SALLE + "s %" +
-                            Professeur.NBRE_INITIALES + "s";
+                    Professeur.NBRE_INITIALES + "s";
 
     private final String matière;
     private final int jourSemaine;
@@ -31,7 +31,27 @@ public class Leçon {
     private final String salle;
     private Professeur professeur;
 
-    public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle){
+    /**
+     * @param matière
+     * @param jourSemaine
+     * @param périodeDébut
+     * @param durée
+     * @param salle
+     */
+    public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle) {
+        if (périodeDébut + durée > HEURES.length) {
+            throw new RuntimeException("La durée de la leçon excède la longueur de la plage " +
+                    "horaire");
+        }
+        if(salle.length() > INITIALES_SALLE){
+            throw new RuntimeException("Les initiales de la salle ne peuvent pas dépasser" +
+                    INITIALES_SALLE + " caractères. Actuellement : " + salle.length());
+        }
+        if(matière.length() > INITIALES_MATIERE){
+            throw new RuntimeException("Les initiales de la matière ne peuvent pas dépasser" +
+                    INITIALES_MATIERE + " caractères. Actuellement : " + matière.length());
+        }
+
         this.matière = matière;
         this.jourSemaine = jourSemaine;
         this.périodeDébut = périodeDébut;
@@ -40,7 +60,6 @@ public class Leçon {
     }
 
     /**
-     * Constructeur de Leçon
      * @param matière
      * @param jourSemaine
      * @param périodeDébut
@@ -49,23 +68,24 @@ public class Leçon {
      * @param professeur
      */
     public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle,
-                 Professeur professeur){
+                 Professeur professeur) {
         this(matière, jourSemaine, périodeDébut, durée, salle);
         this.professeur = professeur;
-        if(professeur != null){
+        if (professeur != null) {
             this.professeur.définirLeçon(this);
         }
     }
 
     /**
      * Construit l'en-tête de la grille horaire
+     *
      * @return l'en-tête de la grille horaire
      */
-    private static StringBuilder CréerEnTête(){
+    private static StringBuilder CréerEnTête() {
         StringBuilder enTête = new StringBuilder(SEP_HEURE);
 
         //Ajouter tous les jours de la semaine
-        for(String jour : JOURS){
+        for (String jour : JOURS) {
             enTête.append(String.format(SEP_COL + " %-" + (LARGEUR_COL_JOURS - 1) + "s", jour));
         }
         //Ajouter le dernier séparateur, le retour à la ligne et le bas des cellules de l'en-tête
@@ -74,16 +94,17 @@ public class Leçon {
 
     /**
      * Construit la cellule de la grille horaire
+     *
      * @param indiceLigne L'indice du tableau de leçons
-     * @param leçon La leçon dont on crée la cellule
+     * @param leçon       La leçon dont on crée la cellule
      * @return La cellule à afficher de la grille horaire
      */
-    private static String créerCellule(int indiceLigne, Leçon leçon){
+    private static String créerCellule(int indiceLigne, Leçon leçon) {
         boolean estLignePaire = indiceLigne % 2 == 0;
 
         //Dans le cas où aucune leçon n'est attribuée, ajouter une cellule vide
-        if(leçon == null){
-            if(estLignePaire){
+        if (leçon == null) {
+            if (estLignePaire) {
                 return CELLULE_VIDE;
             }
             return BAS_CELLULE;
@@ -92,17 +113,17 @@ public class Leçon {
         int périodeActuelle = indiceLigne / 2 - leçon.périodeDébut + 2;
 
         //Première période de la leçon : ajouter les informations dans la cellule
-        if(périodeActuelle == 1){
-            if(estLignePaire){
+        if (périodeActuelle == 1) {
+            if (estLignePaire) {
                 return String.format(FORMAT_CELLULE, leçon.matière, leçon.salle,
-                        leçon.professeur != null ? leçon.professeur.abreviation() : "");
+                        leçon.professeur != null ? leçon.professeur.abréviation() : "");
             }
-            if(leçon.durée > 1){
+            if (leçon.durée > 1) {
                 return CELLULE_VIDE;
             }
         }
         //Périodes suivantes de la leçon : Cellules vides s'il s'agit d'une période intermédiaire
-        if(périodeActuelle < leçon.durée || estLignePaire){
+        if (périodeActuelle < leçon.durée || estLignePaire) {
             return CELLULE_VIDE;
         }
         //Cas de la ligne impaire de la dernière période
@@ -111,25 +132,26 @@ public class Leçon {
 
     /**
      * Créé l'horaire hebdomadaire en fonction d'une liste de leçons
+     *
      * @param leçons Collection de leçons à formater en grille horaire hebdomadaire
      * @return Un String représentant la grille horaire hebdomadaire
      */
-    public static String horaire(Collection<Leçon> leçons){
+    public static String horaire(Collection<Leçon> leçons) {
         //Tableau 2d contenant toutes les leçons
         Leçon[][] tableauLeçons = new Leçon[HEURES.length][JOURS.length];
-        for(Leçon leçon : leçons){
-            for(int i = 0; i < leçon.durée; ++i){
+        for (Leçon leçon : leçons) {
+            for (int i = 0; i < leçon.durée; ++i) {
                 tableauLeçons[leçon.périodeDébut - 1 + i][leçon.jourSemaine - 1] = leçon;
             }
         }
         //Construction de la grille horaire
         StringBuilder horaire = new StringBuilder(CréerEnTête());
-        for(int i = 0; i < (HEURES.length * 2) - 1; ++i){
+        for (int i = 0; i < (HEURES.length * 2) - 1; ++i) {
             //Ajout de la première cellule représentant l'heure
             horaire.append(i % 2 != 0 ? SEP_HEURE : String.format(FORMAT_HEURE, HEURES[i / 2]));
 
             //Ajout du contenu des cellules de chaque heure de début de chaque jour
-            for(int j = 0; j < JOURS.length; ++j){
+            for (int j = 0; j < JOURS.length; ++j) {
                 horaire.append(créerCellule(i, tableauLeçons[i / 2][j]));
             }
             horaire.append(SEP_COL + "\n");

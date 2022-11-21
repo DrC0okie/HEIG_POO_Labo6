@@ -3,59 +3,63 @@ package ch.heig.poo.labo6.école;
 import java.util.ArrayList;
 
 /**
- * La classe Professeur est une sous-classe de Personne qui contient une abréviation et une liste de leçons données.
- *
+ * Représente un professeur avec un nom, prénom et une abréviation. Hérite de la classe Personne
  * @author Kevin Farine, Timothée Von Hove
  */
 public class Professeur extends Personne{
-    //Attributs
-    private String abreviation;
-    private ArrayList<Leçon> leçons = new ArrayList<Leçon>();
+
+    private final String abreviation;
+
+    private final ArrayList<Leçon> leçons = new ArrayList<>();
 
     static final int NBRE_INITIALES = 3;
 
-    //Méthodes
-
     /**
-     * Construit un objet de classe Professeur en fournissant un nom, un prénom et une abréviation.
-     * @param nom
-     * @param prénom
-     * @param abreviation
+     * Constructeur prenant un nom, un prénom et une abréviation.
+     * @param nom Le nom de famille du professeur
+     * @param prénom Le prénom du professeur
+     * @param abréviation L'acronyme du professeur (par défaut 3 caractères, modifiable)
+     * @throws RuntimeException Si l'abréviation du professeur est trop longue
      */
-    public Professeur(String nom, String prénom, String abreviation){
+    public Professeur(String nom, String prénom, String abréviation){
         super(nom, prénom);
-        this.abreviation = abreviation;
+        if(abréviation.length() > NBRE_INITIALES){
+            throw new RuntimeException("Les initiales du professeur ne peuvent pas dépasser" +
+                    NBRE_INITIALES + " caractères. Actuellement : " + abréviation.length());
+        }
+        this.abreviation = abréviation;
     }
 
     /**
      * Ajoute une leçon à la liste de leçons enseignées.
-     * @param leçon leçon ajouté à la liste
+     * @param leçon La leçon à ajouter
      */
     void définirLeçon(Leçon leçon){
         leçons.add(leçon);
     }
 
     /**
-     * Récupère l'abréviation du professeur
-     * @return Retourne l'abréviation du professeur en chaîne de caractères
+     * Retourne l'abréviation du professeur
+     * @return Un String représentant l'abréviation du Professeur
      */
-    public String abreviation(){
+    public String abréviation(){
         return abreviation;
     }
 
     /**
-     * Convertit et retourne les informations liées au professeur en chaîne de caractères.
-     * @return Retourne les informations liées au professeur.
+     * Convertit et retourne les informations liées au professeur sous forme de String
+     * @return Un String représentant les attributs du Professeur
      */
     public String toString(){
         return "Prof. " + super.toString() + " ("+ abreviation + ")";
     }
 
     /**
-     * Fournit la grille horaire du professeur en se basant sur les cours enseignés
-     * @return Retourne une chaîne de caractères de la grille horaire
+     * Fournit la grille horaire du professeur en se basant sur les cours qu'il enseigne
+     * @return Un String représentant la grille horaire hebdomadaire du Professeur
      */
     public String horaire(){
-        return "-- Horaire Prof. " + getPrénom() + " " + getNom() + " (" + abreviation + ")\n" + Leçon.horaire(leçons);
+        return "-- Horaire Prof. " + getPrénom() + " " + getNom() + " (" + abreviation + ")\n" +
+                Leçon.horaire(leçons);
     }
 }
