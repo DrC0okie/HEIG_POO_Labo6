@@ -2,6 +2,7 @@ package ch.heig.poo.labo6.école;
 
 /**
  * Représente un étudiant avec un nom, prénom et un matricule. Hérite de la classe Personne
+ * Date de création 17.11.2022
  *
  * @author Kevin Farine, Timothée Van Hove
  */
@@ -9,7 +10,7 @@ public class Etudiant extends Personne {
 
     private final int matricule;
 
-    private Groupe groupe = null;
+    private Groupe groupe;
 
     /**
      * Constructeur prenant un nom, un prénom et un matricule

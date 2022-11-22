@@ -6,6 +6,7 @@ import java.util.Collection;
 /**
  * Représente un Groupe d'étudiants avec un nom de groupe, une orientation, d'un trimestre et un
  * numéro.
+ * Date de création 17.11.2022
  *
  * @author Kevin Farine, Timothée Van Hove
  */
@@ -34,6 +35,7 @@ public class Groupe {
         this.trimestre = trimestre;
         this.étudiants = new ArrayList<>();
         this.étudiants.addAll(étudiants);
+        leçons = new ArrayList<>();
         for (Etudiant étudiant : this.étudiants) {
             étudiant.setGroupe(this);
         }
@@ -45,14 +47,11 @@ public class Groupe {
      * @param leçons La liste de leçons à ajouter
      */
     public void définirLeçons(Collection<Leçon> leçons) {
-        if (this.leçons == null) {
-            this.leçons = new ArrayList<>();
-        }
         this.leçons.addAll(leçons);
     }
 
     /**
-     * Fournit la grille horaire du groupe en se basant sur les cours suivis.
+     * Retourne la grille horaire du groupe en se basant sur les cours suivis.
      *
      * @return Un String représentant la grille horaire du groupe
      */

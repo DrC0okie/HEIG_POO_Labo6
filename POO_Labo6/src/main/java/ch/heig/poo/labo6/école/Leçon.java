@@ -3,21 +3,28 @@ package ch.heig.poo.labo6.école;
 import java.util.Collection;
 
 /**
- * Représente une leçon contenant la matière
+ * Représente une leçon contenant une matière, une salle, un jour de la semaine, une durée ainsi
+ * que le numéro de la période du jour où ce cours est suivi / enseigné
+ * Date de création 17.11.2022
+ * Remarques : Les séparateurs de ligne / colonnes, Le nombre de jours dans la semaine, les
+ * plages horaire, ainsi que la longueur des initiales peuvent être changés. L'affichage de
+ * l'horaire s'adaptera automatiquement
  *
  * @author Kevin Farine, Timothée Van Hove
  */
 public class Leçon {
     private enum Jours {Lun, Mar, Mer, Jeu, Ven}
 
-    ;
-    final private static String[] HEURES = {"8:30", "9:15", "10:25", "11:15", "12:00", "13:15",
+    private static final String[] HEURES = {"8:30", "9:15", "10:25", "11:15", "12:00", "13:15",
             "14:00", "14:55", "15:45", "16:35", "17:20"};
-    final private static char SEP_COL = '|', SEP_LIGNE = '-';
-    final private static int LARGEUR_PREMIERE_COL = 5,
+
+    private static final char SEP_COL = '|', SEP_LIGNE = '-';
+
+    private static final int LARGEUR_PREMIERE_COL = 5,
             INITIALES_MATIERE = 5, INITIALES_SALLE = 3,
             LARGEUR_COL_JOURS = 2 + Professeur.NBRE_INITIALES + INITIALES_MATIERE + INITIALES_SALLE;
-    final private static String BAS_CELLULE = SEP_COL + (SEP_LIGNE + "").repeat(LARGEUR_COL_JOURS),
+
+    private static final String BAS_CELLULE = SEP_COL + (SEP_LIGNE + "").repeat(LARGEUR_COL_JOURS),
             CELLULE_VIDE = BAS_CELLULE.replace(SEP_LIGNE, ' '),
             SEP_HEURE = " ".repeat(LARGEUR_PREMIERE_COL),
             SEP_LIGNE_COMPLETE = SEP_HEURE + BAS_CELLULE.repeat(Jours.values().length) + SEP_COL + "\n",
@@ -26,10 +33,15 @@ public class Leçon {
                     Professeur.NBRE_INITIALES + "s";
 
     private final String matière;
+
     private final int jourSemaine;
+
     private final int périodeDébut;
+
     private final int durée;
+
     private final String salle;
+
     private Professeur professeur;
 
     /**
@@ -41,7 +53,7 @@ public class Leçon {
      * @param durée La durée (en périodes) de la leçon
      * @param salle L'acronyme de la salle de cours. Par défaut, maximum 3 caractères
      * @throws RuntimeException Si durée, périodeDébut sont inférieurs à 0, si la durée de la
-     * leçon dépasse les plages horaires de la semaine, si jourSemaine est hors plage, sila
+     * leçon dépasse les plages horaires de la semaine, si jourSemaine est hors plage, ou si la
      * longueur des initiales est trop grande.
      */
     public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle) {
@@ -49,10 +61,10 @@ public class Leçon {
             throw new RuntimeException("La durée de la leçon excède la longueur de la plage " +
                     "horaire");
         }
-        if(durée < 1 || périodeDébut < 1){
+        if (durée < 1 || périodeDébut < 1) {
             throw new RuntimeException("La durée et la période de début doivent être > 0");
         }
-        if(jourSemaine < 1 || jourSemaine > Jours.values().length){
+        if (jourSemaine < 1 || jourSemaine > Jours.values().length) {
             throw new RuntimeException("Le jour de la semaine doit être entre 1 et " +
                     Jours.values().length);
         }
@@ -133,7 +145,7 @@ public class Leçon {
         if (périodeActuelle == 1) {
             if (estLignePaire) {
                 return String.format(FORMAT_CELLULE, leçon.matière, leçon.salle,
-                        leçon.professeur != null ? leçon.professeur.abreviation() : "");
+                        leçon.professeur != null ? leçon.professeur.abréviation() : "");
             }
             if (leçon.durée > 1) {
                 return CELLULE_VIDE;
