@@ -6,6 +6,7 @@ import java.util.Collection;
 /**
  * Représente un Groupe d'étudiants avec un nom de groupe, une orientation, d'un trimestre et un
  * numéro.
+ *
  * @author Kevin Farine, Timothée Van Hove
  */
 public class Groupe {
@@ -22,27 +23,29 @@ public class Groupe {
 
     /**
      * Constructeur prenant un numéro, une orientation et un trimestre
+     *
      * @param numéro Le numéro de groupe
      * @param orientation L'orientation (filière) du groupe
      * @param trimestre Le trimestre auquel il participe
      */
-    public Groupe(int numéro, String orientation, int trimestre, Collection<Etudiant> étudiants){
+    public Groupe(int numéro, String orientation, int trimestre, Collection<Etudiant> étudiants) {
         this.numéro = numéro;
         this.orientation = orientation;
         this.trimestre = trimestre;
         this.étudiants = new ArrayList<>();
         this.étudiants.addAll(étudiants);
-        for(Etudiant étudiant : this.étudiants){
+        for (Etudiant étudiant : this.étudiants) {
             étudiant.setGroupe(this);
         }
     }
 
     /**
      * Ajoute une leçon à la liste de leçons du groupe
+     *
      * @param leçons La liste de leçons à ajouter
      */
-    public void définirLeçons(Collection<Leçon> leçons){
-        if(this.leçons == null){
+    public void définirLeçons(Collection<Leçon> leçons) {
+        if (this.leçons == null) {
             this.leçons = new ArrayList<>();
         }
         this.leçons.addAll(leçons);
@@ -50,26 +53,29 @@ public class Groupe {
 
     /**
      * Fournit la grille horaire du groupe en se basant sur les cours suivis.
+     *
      * @return Un String représentant la grille horaire du groupe
      */
-    public String horaire(){
+    public String horaire() {
         return "-- Horaire du groupe " + nom() + " (" + nombreEtudiants() + " étudiants)\n" +
                 Leçon.horaire(leçons);
     }
 
     /**
      * Retourne le nom du groupe, formaté à partir de l'orientation, du trimestre et du numéro
+     *
      * @return Un String représentant le nom formaté du groupe
      */
-    public String nom(){
+    public String nom() {
         return orientation + trimestre + "-" + numéro;
     }
 
     /**
      * Retourne le nombre d'étudiants faisant partis du groupe
+     *
      * @return Le nombre d'étudiants du groupe
      */
-    public int nombreEtudiants(){
+    public int nombreEtudiants() {
         return étudiants.size();
     }
 

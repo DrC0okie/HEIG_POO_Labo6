@@ -35,16 +35,26 @@ public class Leçon {
     /**
      * Constructeur de la Leçon
      *
-     * @param matière      L'acronyme de la matière de la leçon (par défaut 5 caractères maximum)
-     * @param jourSemaine  Le jour de la semaine 1 (lundi) à 5 (vendredi)
+     * @param matière L'acronyme de la matière de la leçon (par défaut 5 caractères maximum)
+     * @param jourSemaine Le jour de la semaine 1 (lundi) à 5 (vendredi)
      * @param périodeDébut Le numéro de période à laquelle la leçon commence (1 - 11 par défaut)
-     * @param durée        La durée (en périodes) de la leçon
-     * @param salle        L'acronyme de la salle de cours. Par défaut, maximum 3 caractères
+     * @param durée La durée (en périodes) de la leçon
+     * @param salle L'acronyme de la salle de cours. Par défaut, maximum 3 caractères
+     * @throws RuntimeException Si durée, périodeDébut sont inférieurs à 0, si la durée de la
+     * leçon dépasse les plages horaires de la semaine, si jourSemaine est hors plage, sila
+     * longueur des initiales est trop grande.
      */
     public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle) {
         if (périodeDébut + durée > HEURES.length) {
             throw new RuntimeException("La durée de la leçon excède la longueur de la plage " +
                     "horaire");
+        }
+        if(durée < 1 || périodeDébut < 1){
+            throw new RuntimeException("La durée et la période de début doivent être > 0");
+        }
+        if(jourSemaine < 1 || jourSemaine > Jours.values().length){
+            throw new RuntimeException("Le jour de la semaine doit être entre 1 et " +
+                    Jours.values().length);
         }
         if (salle.length() > INITIALES_SALLE) {
             throw new RuntimeException("Les initiales de la salle ne peuvent pas dépasser" +
@@ -65,18 +75,18 @@ public class Leçon {
     /**
      * Constructeur de la Leçon
      *
-     * @param matière      L'acronyme de la matière de la leçon (par défaut 5 caractères maximum)
-     * @param jourSemaine  Le jour de la semaine 1 (lundi) à 5 (vendredi)
+     * @param matière L'acronyme de la matière de la leçon (par défaut 5 caractères maximum)
+     * @param jourSemaine Le jour de la semaine 1 (lundi) à 5 (vendredi)
      * @param périodeDébut Le numéro de période à laquelle la leçon commence (1 - 11 par défaut)
-     * @param durée        La durée (en périodes) de la leçon
-     * @param salle        L'acronyme de la salle de cours. Par défaut, maximum 3 caractères
-     * @param professeur   Le professeur assigné à cette leçon
+     * @param durée La durée (en périodes) de la leçon
+     * @param salle L'acronyme de la salle de cours. Par défaut, maximum 3 caractères
+     * @param professeur Le professeur assigné à cette leçon
      */
     public Leçon(String matière, int jourSemaine, int périodeDébut, int durée, String salle,
                  Professeur professeur) {
         this(matière, jourSemaine, périodeDébut, durée, salle);
-        this.professeur = professeur;
-        if (professeur != null) {
+        if (this.professeur != null) {
+            this.professeur = professeur;
             this.professeur.définirLeçon(this);
         }
     }
