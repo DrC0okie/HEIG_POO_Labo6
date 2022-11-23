@@ -5,6 +5,8 @@ import java.util.Arrays;
 
 /**
  * Classe permettant de tester les fonctionnalités demandées dans la donnée du laboratoire 6
+ * Date de création 17.11.2022
+ *
  * @author Kevin Farine, Timothée Van Hove
  */
 public class Main {

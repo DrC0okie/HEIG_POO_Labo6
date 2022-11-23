@@ -9,6 +9,7 @@ import java.util.Collection;
  * Remarques : Les séparateurs de ligne / colonnes, Le nombre de jours dans la semaine, les
  * plages horaire, ainsi que la longueur des initiales peuvent être changés. L'affichage de
  * l'horaire s'adaptera automatiquement
+ * Date de création 17.11.2022
  *
  * @author Kevin Farine, Timothée Van Hove
  */
