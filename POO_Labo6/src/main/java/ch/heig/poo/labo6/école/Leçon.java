@@ -28,7 +28,8 @@ public class Leçon {
     private static final String BAS_CELLULE = SEP_COL + (SEP_LIGNE + "").repeat(LARGEUR_COL_JOURS),
             CELLULE_VIDE = BAS_CELLULE.replace(SEP_LIGNE, ' '),
             SEP_HEURE = " ".repeat(LARGEUR_PREMIERE_COL),
-            SEP_LIGNE_COMPLETE = SEP_HEURE + BAS_CELLULE.repeat(Jours.values().length) + SEP_COL + "\n",
+            SEP_LIGNE_COMPLETE = SEP_HEURE + BAS_CELLULE.repeat(Jours.values().length) + SEP_COL +
+                    "\n",
             FORMAT_HEURE = "%" + LARGEUR_PREMIERE_COL + "s",
             FORMAT_CELLULE = SEP_COL + "%-" + INITIALES_MATIERE + "s %" + INITIALES_SALLE + "s %" +
                     Professeur.NBRE_INITIALES + "s";
